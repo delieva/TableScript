@@ -4,7 +4,7 @@ function TokenStream(input) {
     var current = null;
     var keywords = " function ";
     return {
-        stream: next()
+        stream: next(),
         next  : next,
         peek  : peek,
         eof   : eof,
@@ -117,6 +117,4 @@ function TokenStream(input) {
 
 let file = fs.readFileSync("programm.txt", "utf8");
 let stream = TokenStream(file)
-var a = 3
-var b = 5
 console.log(stream)
