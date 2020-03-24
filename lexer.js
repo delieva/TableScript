@@ -1,120 +1,117 @@
-const fs = require("fs");
+function StateMachine(name, rules) {
+    this.prevState = {name: 'begin'}
+    this.state = {name: 'begin'}
+    this.rules = rules
+    this.name = name
+}
 
-function TokenStream(input) {
-    var current = null;
-    var keywords = " function ";
-    return {
-        stream: next(),
-        next  : next,
-        peek  : peek,
-        eof   : eof,
-        croak : input.croak
-    };
-    function is_keyword(x) {
-        return keywords.indexOf(" " + x + " ") >= 0;
-    }
-    function is_digit(ch) {
-        return /[0-9]/i.test(ch);
-    }
-    // function is_id_start(ch) {
-    //     return /[a-zλ_]/i.test(ch);
-    // }
-    // function is_id(ch) {
-    //     return is_id_start(ch) || "?!-<>=0123456789".indexOf(ch) >= 0;
-    // }
-    function is_op_char(ch) {
-        return "+-*/=|_".indexOf(ch) >= 0;
-    }
-    function is_punc(ch) {
-        return ".()".indexOf(ch) >= 0;
-    }
-    function is_whitespace(ch) {
-        return " \t\n".indexOf(ch) >= 0;
-    }
-    function read_while(predicate) {
-        var str = "";
-        while (!input.eof() && predicate(input.peek()))
-            str += input.next();
-        return str;
-    }
-    function read_number() {
-        var has_koma = false;
-        var number = read_while(function(ch){
-            if (ch == ",") {
-                if (has_koma) return false;
-                has_koma = true;
-                return true;
-            }
-            return is_digit(ch);
-        });
-        return { type: "num", value: parseFloat(number) };
-    }
-    function read_ident() {
-        var id = read_while(is_id);
-        return {
-            type  : is_keyword(id) ? "kw" : "var",
-            value : id
-        };
-    }
-    function read_escaped(end) {
-        var escaped = false, str = "";
-        input.next();
-        while (!input.eof()) {
-            var ch = input.next();
-            if (escaped) {
-                str += ch;
-                escaped = false;
-            } else if (ch == "\\") {
-                escaped = true;
-            } else if (ch == end) {
-                break;
-            } else {
-                str += ch;
-            }
-        }
-        return str;
-    }
-    function read_string() {
-        return { type: "str", value: read_escaped('"') };
-    }
-    function skip_comment() {
-        read_while(function(ch){ return ch != "\n" });
-        input.next();
-    }
-    function read_next() {
-        read_while(is_whitespace);
-        if (input.eof()) return null;
-        var ch = input.peek();
-        if (ch == "#") {
-            skip_comment();
-            return read_next();
-        }
-        if (ch == '"') return read_string();
-        if (is_digit(ch)) return read_number();
-        if (is_id_start(ch)) return read_ident();
-        if (is_punc(ch)) return {
-            type  : "punc",
-            value : input.next()
-        };
-        if (is_op_char(ch)) return {
-            type  : "op",
-            value : read_while(is_op_char)
-        };
-        input.croak("Can't handle character: " + ch);
-    }
-    function peek() {
-        return current || (current = read_next());
-    }
-    function next() {
-        var tok = current;
-        current = null;
-        return tok || read_next();
-    }
-    function eof() {
-        return peek() == null;
+StateMachine.prototype.inputChar = function(char) {
+    this.prevState = this.state
+    if (this.state) {
+        this.state = this.rules[this.state.name](char)
     }
 }
 
-let file = fs.readFileSync("programm.txt", "utf8");
-let stream = TokenStream(file)
-console.log(stream)
+StateMachine.prototype.resetState = function() {
+    this.prevState = {name: 'begin'}
+    this.state = {name: 'begin'}
+}
+
+const wordMachine = new StateMachine('word', {
+    begin: char => {
+        if (/[a-z]/i.test(char)) {
+            return {name: 'begin'}
+        }
+    }
+})
+
+const spaceMachine = new StateMachine('spaces', {
+    begin: char => {
+        if (char === ' ') {
+            return {name: 'begin'}
+        }
+    }
+})
+
+const numberMachine = new StateMachine('number', {
+    begin: char => {
+        if (/[0-9]/.test(char)) {
+            return {name: 'num'}
+        }
+    },
+    num: char => {
+        if (/[0-9]/.test(char)) {
+            return {name: 'num'}
+        } else if (char === '.') {
+            return {name: 'dot', notEnd: true}
+        }
+    },
+    dot: char => {
+        if (/[0-9]/.test(char)) {
+            return {name: 'dot'}
+        }
+    },
+})
+
+const appropriationMachine = new StateMachine('appropriation', {
+    begin: char => {
+        if (char === '=') {
+            return {name: 'end'}
+        }
+    },
+    end: () => undefined
+})
+
+function getActiveName(machinesList) {
+    for (let i = 0; i < machinesList.length; i++) {
+        if (machinesList[i].prevState && !machinesList[i].prevState.notEnd) {
+            return machinesList[i].name
+        }
+    }
+}
+
+function resetAllRules(machinesList) {
+    machinesList.forEach(item => {
+        item.resetState()
+    })
+}
+
+const allRules = [wordMachine, spaceMachine, appropriationMachine, numberMachine]
+
+const string = `
+main = function():
+    table = readFile('kek').
+    end.
+`;
+const tokens = [] // Результирующий список токенов
+let charsCounter = 0 // счётчик символов в пределах одного токена
+
+for (let i = 0; i <= string.length; i++) {
+    charsCounter++
+    let hasActiveMachine = false
+    allRules.forEach(machine => {
+        machine.inputChar(string[i])
+        if (machine.state) {
+            hasActiveMachine = true
+        }
+    })
+
+    if (!hasActiveMachine) {
+        if (charsCounter > 1) {
+            tokens.push({
+                token: getActiveName(allRules),
+                lexeme: string.substring(i - charsCounter + 1, i)
+            })
+            i--
+        } else {
+            tokens.push({
+                token: undefined,
+                lexeme: string.substring(i, i + 1)
+            })
+        }
+        charsCounter = 0
+        resetAllRules(allRules)
+    }
+}
+
+console.log(tokens)
