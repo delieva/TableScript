@@ -1,3 +1,7 @@
+ownFunction = function(_):
+    a = _.
+    end.
+
 main = function():
     table = readFile('./test.csv') | deleteRow(1, 1).
     a = 14.88.
