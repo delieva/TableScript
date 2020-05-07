@@ -1,5 +1,5 @@
 main = function():
-    table = readFile('./test.csv') | deleteRow(1, 1).
+    table = readFile('./test.csv') | readFile('./test.csv').
     a = 14.88.
-    end.
+    end
 

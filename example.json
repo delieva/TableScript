@@ -1,0 +1,94 @@
+[
+  {
+    "token": "word",
+    "lexeme": "main"
+  },
+  {
+    "token": "appropriation",
+    "lexeme": "="
+  },
+  {
+    "token": "word",
+    "lexeme": "function"
+  },
+  {
+    "token": "punc",
+    "lexeme": "("
+  },
+  {
+    "token": "punc",
+    "lexeme": ")"
+  },
+  {
+    "token": "functionBodyStart",
+    "lexeme": ":"
+  },
+  {
+    "token": "word",
+    "lexeme": "table"
+  },
+  {
+    "token": "appropriation",
+    "lexeme": "="
+  },
+  {
+    "token": "word",
+    "lexeme": "readFile"
+  },
+  {
+    "token": "punc",
+    "lexeme": "("
+  },
+  {
+    "token": "string",
+    "lexeme": "'./test.csv'"
+  },
+  {
+    "token": "punc",
+    "lexeme": ")"
+  },
+  {
+    "token": "pipe",
+    "lexeme": "|"
+  },
+  {
+    "token": "word",
+    "lexeme": "readFile"
+  },
+  {
+    "token": "punc",
+    "lexeme": "("
+  },
+  {
+    "token": "string",
+    "lexeme": "'./test.csv'"
+  },
+  {
+    "token": "punc",
+    "lexeme": ")"
+  },
+  {
+    "token": "dot",
+    "lexeme": "."
+  },
+  {
+    "token": "word",
+    "lexeme": "a"
+  },
+  {
+    "token": "appropriation",
+    "lexeme": "="
+  },
+  {
+    "token": "number",
+    "lexeme": "14.88"
+  },
+  {
+    "token": "dot",
+    "lexeme": "."
+  },
+  {
+    "token": "word",
+    "lexeme": "end"
+  }
+]

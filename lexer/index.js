@@ -50,8 +50,9 @@ class Lexer {
         resetAllRules(stateMachines);
       }
     }
-
-    return tokens
+    return tokens.filter((item) => {
+      return item.token !== 'spaces' && item.token !== 'newLine'
+    })
   }
 }
 

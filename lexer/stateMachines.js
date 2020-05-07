@@ -42,10 +42,11 @@ const dotMachine = new StateMachine('dot', {
 
 const puncMachine = new StateMachine('punc', {
   begin: char => {
-    if (/[(,)]/.test(char)) {
-      return defaultState;
+    if (/[(,),_]/.test(char)) {
+      return {name: 'end'};
     }
-  }
+  },
+  end: () => undefined
 });
 
 const stringMachine = new StateMachine('string', {
