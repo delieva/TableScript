@@ -1,0 +1,5 @@
+main = function():
+    table = readFile('./test.csv') | readFile('./test.csv').
+    a = 14.88.
+    end
+
