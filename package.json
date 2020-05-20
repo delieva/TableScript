@@ -1,0 +1,19 @@
+{
+  "name": "tablescript",
+  "version": "1.0.0",
+  "description": "Functional language for working with tables",
+  "main": "index.js",
+  "scripts": {
+    "execute": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/delieva/TableScript.git"
+  },
+  "author": "Mykhailo Afanasiuk, Alexandra Delieva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/delieva/TableScript/issues"
+  },
+  "homepage": "https://github.com/delieva/TableScript#readme"
+}

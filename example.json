@@ -1,6 +1,54 @@
 [
   {
     "token": "word",
+    "lexeme": "displayTable"
+  },
+  {
+    "token": "appropriation",
+    "lexeme": "="
+  },
+  {
+    "token": "word",
+    "lexeme": "function"
+  },
+  {
+    "token": "punc",
+    "lexeme": "("
+  },
+  {
+    "token": "word",
+    "lexeme": "table"
+  },
+  {
+    "token": "punc",
+    "lexeme": ")"
+  },
+  {
+    "token": "functionBodyStart",
+    "lexeme": ":"
+  },
+  {
+    "token": "word",
+    "lexeme": "showTable"
+  },
+  {
+    "token": "punc",
+    "lexeme": "("
+  },
+  {
+    "token": "word",
+    "lexeme": "table"
+  },
+  {
+    "token": "punc",
+    "lexeme": ")"
+  },
+  {
+    "token": "word",
+    "lexeme": "end"
+  },
+  {
+    "token": "word",
     "lexeme": "main"
   },
   {
@@ -25,6 +73,22 @@
   },
   {
     "token": "word",
+    "lexeme": "a"
+  },
+  {
+    "token": "appropriation",
+    "lexeme": "="
+  },
+  {
+    "token": "number",
+    "lexeme": "14.88"
+  },
+  {
+    "token": "dot",
+    "lexeme": "."
+  },
+  {
+    "token": "word",
     "lexeme": "table"
   },
   {
@@ -41,27 +105,7 @@
   },
   {
     "token": "string",
-    "lexeme": "'./test.csv'"
-  },
-  {
-    "token": "punc",
-    "lexeme": ")"
-  },
-  {
-    "token": "pipe",
-    "lexeme": "|"
-  },
-  {
-    "token": "word",
-    "lexeme": "readFile"
-  },
-  {
-    "token": "punc",
-    "lexeme": "("
-  },
-  {
-    "token": "string",
-    "lexeme": "'./test.csv'"
+    "lexeme": "'./example.csv'"
   },
   {
     "token": "punc",
@@ -73,15 +117,199 @@
   },
   {
     "token": "word",
-    "lexeme": "a"
+    "lexeme": "displayTable"
+  },
+  {
+    "token": "punc",
+    "lexeme": "("
+  },
+  {
+    "token": "word",
+    "lexeme": "table"
+  },
+  {
+    "token": "punc",
+    "lexeme": ")"
+  },
+  {
+    "token": "dot",
+    "lexeme": "."
+  },
+  {
+    "token": "word",
+    "lexeme": "removeColumn"
+  },
+  {
+    "token": "punc",
+    "lexeme": "("
+  },
+  {
+    "token": "number",
+    "lexeme": "6"
+  },
+  {
+    "token": "punc",
+    "lexeme": ","
+  },
+  {
+    "token": "word",
+    "lexeme": "table"
+  },
+  {
+    "token": "punc",
+    "lexeme": ")"
+  },
+  {
+    "token": "dot",
+    "lexeme": "."
+  },
+  {
+    "token": "word",
+    "lexeme": "b"
   },
   {
     "token": "appropriation",
     "lexeme": "="
   },
   {
+    "token": "word",
+    "lexeme": "getValue"
+  },
+  {
+    "token": "punc",
+    "lexeme": "("
+  },
+  {
     "token": "number",
-    "lexeme": "14.88"
+    "lexeme": "1"
+  },
+  {
+    "token": "punc",
+    "lexeme": ","
+  },
+  {
+    "token": "number",
+    "lexeme": "1"
+  },
+  {
+    "token": "punc",
+    "lexeme": ","
+  },
+  {
+    "token": "word",
+    "lexeme": "table"
+  },
+  {
+    "token": "punc",
+    "lexeme": ")"
+  },
+  {
+    "token": "dot",
+    "lexeme": "."
+  },
+  {
+    "token": "word",
+    "lexeme": "setValue"
+  },
+  {
+    "token": "punc",
+    "lexeme": "("
+  },
+  {
+    "token": "number",
+    "lexeme": "0"
+  },
+  {
+    "token": "punc",
+    "lexeme": ","
+  },
+  {
+    "token": "number",
+    "lexeme": "0"
+  },
+  {
+    "token": "punc",
+    "lexeme": ","
+  },
+  {
+    "token": "word",
+    "lexeme": "b"
+  },
+  {
+    "token": "punc",
+    "lexeme": ","
+  },
+  {
+    "token": "word",
+    "lexeme": "table"
+  },
+  {
+    "token": "punc",
+    "lexeme": ")"
+  },
+  {
+    "token": "pipe",
+    "lexeme": "|"
+  },
+  {
+    "token": "word",
+    "lexeme": "removeRow"
+  },
+  {
+    "token": "punc",
+    "lexeme": "("
+  },
+  {
+    "token": "number",
+    "lexeme": "1"
+  },
+  {
+    "token": "punc",
+    "lexeme": ")"
+  },
+  {
+    "token": "pipe",
+    "lexeme": "|"
+  },
+  {
+    "token": "word",
+    "lexeme": "swapColumns"
+  },
+  {
+    "token": "punc",
+    "lexeme": "("
+  },
+  {
+    "token": "number",
+    "lexeme": "0"
+  },
+  {
+    "token": "punc",
+    "lexeme": ","
+  },
+  {
+    "token": "number",
+    "lexeme": "1"
+  },
+  {
+    "token": "punc",
+    "lexeme": ")"
+  },
+  {
+    "token": "pipe",
+    "lexeme": "|"
+  },
+  {
+    "token": "word",
+    "lexeme": "displayTable"
+  },
+  {
+    "token": "punc",
+    "lexeme": "("
+  },
+  {
+    "token": "punc",
+    "lexeme": ")"
   },
   {
     "token": "dot",
