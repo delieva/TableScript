@@ -1,15 +1,15 @@
 # Program example
 
 displayTable = function(table):
-    showTable(table).
-    return = table.
+    showTable(table);
+    return = table;
     end
 
 main = function():
-    a = 14.88.
-    table = readFile('./example.csv').
-    displayTable(table).
-    removeColumn(6, table).
-    b = getValue(1, 1, table).
-    setValue(0, 0, b, table) | removeRow(1) | swapColumns (0, 1) | displayTable() | showTable().
+    a = 14.88;
+    table = readFile('./example.csv');
+    displayTable(table);
+    removeColumn(6, table);
+    b = getValue(1, 1, table);
+    setValue(0, 0, b, table) | removeRow(1) | swapColumns (0, 1) | displayTable() | showTable();
     end
