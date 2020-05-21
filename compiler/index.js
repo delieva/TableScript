@@ -36,11 +36,7 @@ class Compiler {
   constructor(astTree) {
     this.resultJsCode = ''
     
-    this.move(astTree);
-    console.log(contexts);
-    console.log(this.resultJsCode);
-    
-    return this.resultJsCode
+    return this.move(astTree);
   }
   
   typeHandlers = {
@@ -119,7 +115,6 @@ class Compiler {
       this.resultJsCode += currentNode.lexeme;
     },
     word: (currentNode) => {
-      console.log(currentFunction)
       if (prevType === 'call') {
         if (!declaredFunctions.get(currentNode.lexeme)) {
           throw new Error(`Calling function ${currentNode.lexeme} before initialization`)
@@ -155,6 +150,7 @@ class Compiler {
     }
     
     prevNode = currentNode;
+    return this.resultJsCode
   }
   
   checkIfInCurrentContext(word) {
