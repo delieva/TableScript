@@ -32,6 +32,19 @@ const pipeMachine = new StateMachine('pipe', {
   }
 });
 
+const commentMachine = new StateMachine('comment', {
+  begin: char => {
+    if (char === '#') {
+      return {name: 'comment'}
+    }
+  },
+  comment: char => {
+    if (char !== '\n') {
+      return {name: 'comment'}
+    }
+  }
+})
+
 const dotMachine = new StateMachine('dot', {
   begin: char => {
     if (char === '.') {
@@ -115,7 +128,8 @@ const allMachines = [
   dotMachine,
   appropriationMachine,
   numberMachine,
-  newLineMachine
+  newLineMachine,
+  commentMachine
 ];
 
 module.exports = allMachines;
