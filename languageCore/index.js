@@ -16,9 +16,12 @@ const {
 class Core {
   constructor(code, filePath) {
     const readFile = (tablePath) => {
-      console.log(join(dirname(filePath), tablePath));
       return readFileRawPath(join(dirname(filePath), tablePath));
     };
+    
+    const writeFile = (tablePath, table) => {
+      return writeFileRawPath(join(dirname(filePath), tablePath), table)
+    }
     
     eval(code + 'main()');
   }

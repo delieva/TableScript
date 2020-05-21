@@ -1,9 +1,5 @@
 [
   {
-    "token": "newLine",
-    "lexeme": "\n\n"
-  },
-  {
     "token": "word",
     "lexeme": "displayTable"
   },
@@ -32,10 +28,6 @@
     "lexeme": ":"
   },
   {
-    "token": "newLine",
-    "lexeme": "\n"
-  },
-  {
     "token": "word",
     "lexeme": "showTable"
   },
@@ -52,12 +44,8 @@
     "lexeme": ")"
   },
   {
-    "token": "punc",
-    "lexeme": ";"
-  },
-  {
-    "token": "newLine",
-    "lexeme": "\n"
+    "token": "dot",
+    "lexeme": "."
   },
   {
     "token": "word",
@@ -72,20 +60,12 @@
     "lexeme": "table"
   },
   {
-    "token": "punc",
-    "lexeme": ";"
-  },
-  {
-    "token": "newLine",
-    "lexeme": "\n"
+    "token": "dot",
+    "lexeme": "."
   },
   {
     "token": "word",
     "lexeme": "end"
-  },
-  {
-    "token": "newLine",
-    "lexeme": "\n"
   },
   {
     "token": "word",
@@ -112,10 +92,6 @@
     "lexeme": ":"
   },
   {
-    "token": "newLine",
-    "lexeme": "\n"
-  },
-  {
     "token": "word",
     "lexeme": "a"
   },
@@ -128,12 +104,8 @@
     "lexeme": "14.88"
   },
   {
-    "token": "punc",
-    "lexeme": ";"
-  },
-  {
-    "token": "newLine",
-    "lexeme": "\n"
+    "token": "dot",
+    "lexeme": "."
   },
   {
     "token": "word",
@@ -160,12 +132,8 @@
     "lexeme": ")"
   },
   {
-    "token": "punc",
-    "lexeme": ";"
-  },
-  {
-    "token": "newLine",
-    "lexeme": "\n"
+    "token": "dot",
+    "lexeme": "."
   },
   {
     "token": "word",
@@ -184,20 +152,8 @@
     "lexeme": ")"
   },
   {
-    "token": "punc",
-    "lexeme": ";"
-  },
-  {
-    "token": "newLine",
-    "lexeme": "\n"
-  },
-  {
-    "token": "word",
-    "lexeme": "l"
-  },
-  {
-    "token": "newLine",
-    "lexeme": "\n"
+    "token": "dot",
+    "lexeme": "."
   },
   {
     "token": "word",
@@ -224,12 +180,8 @@
     "lexeme": ")"
   },
   {
-    "token": "punc",
-    "lexeme": ";"
-  },
-  {
-    "token": "newLine",
-    "lexeme": "\n"
+    "token": "dot",
+    "lexeme": "."
   },
   {
     "token": "word",
@@ -272,12 +224,8 @@
     "lexeme": ")"
   },
   {
-    "token": "punc",
-    "lexeme": ";"
-  },
-  {
-    "token": "newLine",
-    "lexeme": "\n"
+    "token": "dot",
+    "lexeme": "."
   },
   {
     "token": "word",
@@ -384,19 +332,27 @@
     "lexeme": ")"
   },
   {
-    "token": "punc",
-    "lexeme": ";"
+    "token": "pipe",
+    "lexeme": "|"
   },
   {
-    "token": "newLine",
-    "lexeme": "\n"
+    "token": "word",
+    "lexeme": "showTable"
+  },
+  {
+    "token": "punc",
+    "lexeme": "("
+  },
+  {
+    "token": "punc",
+    "lexeme": ")"
+  },
+  {
+    "token": "dot",
+    "lexeme": "."
   },
   {
     "token": "word",
     "lexeme": "end"
-  },
-  {
-    "token": "newLine",
-    "lexeme": "\n"
   }
 ]

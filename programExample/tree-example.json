@@ -214,7 +214,15 @@
                       "lexeme": "displayTable"
                     },
                     "args": [],
-                    "next": ""
+                    "next": {
+                      "type": "call",
+                      "func": {
+                        "token": "word",
+                        "lexeme": "showTable"
+                      },
+                      "args": [],
+                      "next": ""
+                    }
                   }
                 }
               }
