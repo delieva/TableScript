@@ -10,7 +10,9 @@ const coreFunctions = [
   'removeRow',
   'getValue',
   'swapColumns',
-  'swapRows'
+  'swapRows',
+  'addRow',
+  'addColumn'
 ]
 
 const declaredFunctions = new Map();

@@ -10,7 +10,9 @@ const {
   removeRow,
   getValue,
   swapColumns,
-  swapRows
+  swapRows,
+  addRow,
+  addColumn
 } = require('./functions');
 
 class Core {

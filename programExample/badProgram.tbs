@@ -1,18 +1,25 @@
+# -- Accessing var before declaration
+# test;
+
+# -- Creating already declared function
+# showTable = function():
+#   end
+# a = 1;
+# a = function():
+#    end
+
+
+# a = 1;
 displayTable = function(table):
     showTable(table);
     return = table;
     end
 
-# Accessing var before declaration
-# Accessing var before declaration
-# Accessing var before declaration
-# Accessing var before declaration
-
 main = function():
     a = 14.88;
     table = readFile('./example.csv');
-    displayTable(table);
+    displayTable(table) | addColumn(1, 2, 3, 4, 5, 6, 7) | displayTable();
     removeColumn(6, table);
     b = getValue(1, 1, table);
-    setValue(0, 0, b, table) | removeRow(1) | swapColumns (0, 1) | displayTable() | showTable();
+    # setValue(0, 0, b, table) | removeRow(1) | swapColumns (0, 1) | displayTable() | showTable();
     end
