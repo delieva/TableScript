@@ -1,34 +1,6 @@
 [
   {
     "token": "word",
-    "lexeme": "showTable"
-  },
-  {
-    "token": "appropriation",
-    "lexeme": "="
-  },
-  {
-    "token": "word",
-    "lexeme": "function"
-  },
-  {
-    "token": "punc",
-    "lexeme": "("
-  },
-  {
-    "token": "punc",
-    "lexeme": ")"
-  },
-  {
-    "token": "functionBodyStart",
-    "lexeme": ":"
-  },
-  {
-    "token": "word",
-    "lexeme": "end"
-  },
-  {
-    "token": "word",
     "lexeme": "displayTable"
   },
   {
@@ -72,8 +44,8 @@
     "lexeme": ")"
   },
   {
-    "token": "dot",
-    "lexeme": "."
+    "token": "punc",
+    "lexeme": ";"
   },
   {
     "token": "word",
@@ -88,8 +60,8 @@
     "lexeme": "table"
   },
   {
-    "token": "dot",
-    "lexeme": "."
+    "token": "punc",
+    "lexeme": ";"
   },
   {
     "token": "word",
@@ -132,8 +104,8 @@
     "lexeme": "14.88"
   },
   {
-    "token": "dot",
-    "lexeme": "."
+    "token": "punc",
+    "lexeme": ";"
   },
   {
     "token": "word",
@@ -160,8 +132,8 @@
     "lexeme": ")"
   },
   {
-    "token": "dot",
-    "lexeme": "."
+    "token": "punc",
+    "lexeme": ";"
   },
   {
     "token": "word",
@@ -180,8 +152,8 @@
     "lexeme": ")"
   },
   {
-    "token": "dot",
-    "lexeme": "."
+    "token": "punc",
+    "lexeme": ";"
   },
   {
     "token": "word",
@@ -208,8 +180,8 @@
     "lexeme": ")"
   },
   {
-    "token": "dot",
-    "lexeme": "."
+    "token": "punc",
+    "lexeme": ";"
   },
   {
     "token": "word",
@@ -252,8 +224,8 @@
     "lexeme": ")"
   },
   {
-    "token": "dot",
-    "lexeme": "."
+    "token": "punc",
+    "lexeme": ";"
   },
   {
     "token": "word",
@@ -360,8 +332,8 @@
     "lexeme": ")"
   },
   {
-    "token": "dot",
-    "lexeme": "."
+    "token": "punc",
+    "lexeme": ";"
   },
   {
     "token": "word",

@@ -55,7 +55,7 @@ const dotMachine = new StateMachine('dot', {
 
 const puncMachine = new StateMachine('punc', {
   begin: char => {
-    if (/[(,),_]/.test(char)) {
+    if (/[(,),_;]/.test(char)) {
       return {name: 'end'};
     }
   },
