@@ -42,7 +42,9 @@ const commentMachine = new StateMachine('comment', {
     if (char !== '\n') {
       return {name: 'comment'}
     }
-  }
+    return { name: 'endOfComment' }
+  },
+  endOfComment: () => undefined
 })
 
 const dotMachine = new StateMachine('dot', {
