@@ -1,0 +1,227 @@
+{
+  "type": "prog",
+  "prog": [
+    {
+      "type": "assign",
+      "operator": "=",
+      "left": {
+        "token": "word",
+        "lexeme": "displayTable"
+      },
+      "right": {
+        "type": "function",
+        "lets": [
+          "table"
+        ],
+        "body": {
+          "type": "prog",
+          "prog": [
+            {
+              "type": "call",
+              "func": {
+                "token": "word",
+                "lexeme": "showTable"
+              },
+              "args": [
+                {
+                  "token": "word",
+                  "lexeme": "table"
+                }
+              ],
+              "next": ""
+            },
+            {
+              "type": "assign",
+              "operator": "=",
+              "left": {
+                "token": "word",
+                "lexeme": "return"
+              },
+              "right": {
+                "token": "word",
+                "lexeme": "table"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "assign",
+      "operator": "=",
+      "left": {
+        "token": "word",
+        "lexeme": "main"
+      },
+      "right": {
+        "type": "function",
+        "lets": [],
+        "body": {
+          "type": "prog",
+          "prog": [
+            {
+              "type": "assign",
+              "operator": "=",
+              "left": {
+                "token": "word",
+                "lexeme": "a"
+              },
+              "right": {
+                "token": "number",
+                "lexeme": "14.88"
+              }
+            },
+            {
+              "type": "assign",
+              "operator": "=",
+              "left": {
+                "token": "word",
+                "lexeme": "table"
+              },
+              "right": {
+                "type": "call",
+                "func": {
+                  "token": "word",
+                  "lexeme": "readFile"
+                },
+                "args": [
+                  {
+                    "token": "string",
+                    "lexeme": "'./example.csv'"
+                  }
+                ],
+                "next": ""
+              }
+            },
+            {
+              "type": "call",
+              "func": {
+                "token": "word",
+                "lexeme": "displayTable"
+              },
+              "args": [
+                {
+                  "token": "word",
+                  "lexeme": "table"
+                }
+              ],
+              "next": ""
+            },
+            {
+              "type": "call",
+              "func": {
+                "token": "word",
+                "lexeme": "removeColumn"
+              },
+              "args": [
+                {
+                  "token": "number",
+                  "lexeme": "6"
+                },
+                {
+                  "token": "word",
+                  "lexeme": "table"
+                }
+              ],
+              "next": ""
+            },
+            {
+              "type": "assign",
+              "operator": "=",
+              "left": {
+                "token": "word",
+                "lexeme": "b"
+              },
+              "right": {
+                "type": "call",
+                "func": {
+                  "token": "word",
+                  "lexeme": "getValue"
+                },
+                "args": [
+                  {
+                    "token": "number",
+                    "lexeme": "1"
+                  },
+                  {
+                    "token": "number",
+                    "lexeme": "1"
+                  },
+                  {
+                    "token": "word",
+                    "lexeme": "table"
+                  }
+                ],
+                "next": ""
+              }
+            },
+            {
+              "type": "call",
+              "func": {
+                "token": "word",
+                "lexeme": "setValue"
+              },
+              "args": [
+                {
+                  "token": "number",
+                  "lexeme": "0"
+                },
+                {
+                  "token": "number",
+                  "lexeme": "0"
+                },
+                {
+                  "token": "word",
+                  "lexeme": "b"
+                },
+                {
+                  "token": "word",
+                  "lexeme": "table"
+                }
+              ],
+              "next": {
+                "type": "call",
+                "func": {
+                  "token": "word",
+                  "lexeme": "removeRow"
+                },
+                "args": [
+                  {
+                    "token": "number",
+                    "lexeme": "1"
+                  }
+                ],
+                "next": {
+                  "type": "call",
+                  "func": {
+                    "token": "word",
+                    "lexeme": "swapColumns"
+                  },
+                  "args": [
+                    {
+                      "token": "number",
+                      "lexeme": "0"
+                    },
+                    {
+                      "token": "number",
+                      "lexeme": "1"
+                    }
+                  ],
+                  "next": {
+                    "type": "call",
+                    "func": {
+                      "token": "word",
+                      "lexeme": "displayTable"
+                    },
+                    "args": [],
+                    "next": ""
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -48,7 +48,7 @@ class Parser {
 	};
 	is_separator = (separator) => {
 		let tok = this.peek();
-		return (tok && tok.token === "dot" && tok.lexeme === separator) || (tok && tok.token === "punc" && tok.lexeme === separator);
+		return (tok && tok.token === "punc" && tok.lexeme === separator);
 	};
 	is_empty_params = () => {
 		let tok = this.peek();
@@ -60,7 +60,7 @@ class Parser {
 		if (this.is_start(start)) this.next(this.input);
 		else this.croak("Expecting punctuation: \"" + this.peek().lexeme + "\"");
 	};
-	skip_dot = (separator) => {
+	skip_separator = (separator) => {
 		if (this.is_separator(separator)) this.next(this.input);
 		else this.croak("Expecting punctuation: \"" + this.peek().lexeme + "\"");
 	};
@@ -100,7 +100,7 @@ class Parser {
     this.skip_start(start);
     while (!this.eof()) {
         if (this.is_stop(stop)) break;
-        if (first) first = false; else this.skip_dot(separator);
+        if (first) first = false; else this.skip_separator(separator);
         if (this.is_stop(stop)) break;
         a.push(parser());
     }
@@ -151,7 +151,7 @@ class Parser {
 		return { type: "prog", prog: program };
 	};
   parse_prog = () => {
-      let prog = this.delimited(":", "end", ".", this.parse_expression);
+      let prog = this.delimited(":", "end", ";", this.parse_expression);
       if (prog.length === 0) return 1;
       if (prog.length === 1) return prog[0];
       return { type: "prog", prog: prog };
