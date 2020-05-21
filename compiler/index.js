@@ -13,15 +13,16 @@ const coreFunctions = [
   'swapRows'
 ]
 
-const declaredFunctions = [
-  ...coreFunctions,
-];
+const declaredFunctions = new Map();
+coreFunctions.forEach((name) => {
+  declaredFunctions.set(name, true)
+})
 
 let currentFunction = 'global';
 const contexts = {
   global: {
     lets: [],
-    variables: []
+    variables: new Map()
   }
 };
 
@@ -49,11 +50,15 @@ class Compiler {
     },
     function: (currentNode) => {
       currentFunction = prevNode.lexeme;
-      declaredFunctions.push(currentFunction);
+      if (declaredFunctions.get(currentFunction)) {
+        throw new Error(`Function ${currentFunction} is already declared`)
+      };
+      
+      declaredFunctions.set(currentFunction, true);
       
       contexts[currentFunction] = {
         lets: currentNode.lets,
-        variables: [],
+        variables: new Map(),
         body: currentNode.body
       }
       
@@ -116,13 +121,18 @@ class Compiler {
     word: (currentNode) => {
       console.log(currentFunction)
       if (prevType === 'call') {
-        if (!declaredFunctions.includes(currentNode.lexeme)) {
+        if (!declaredFunctions.get(currentNode.lexeme)) {
           throw new Error(`Calling function ${currentNode.lexeme} before initialization`)
         }
         this.resultJsCode += `${currentNode.lexeme}(`
       } else if (prevType === 'assign') {
-        contexts[currentFunction].variables.push(currentNode.lexeme)
-        this.resultJsCode += `const ${currentNode.lexeme} = `
+        if (currentNode.lexeme === 'return') {
+          this.resultJsCode += 'return '
+        } else {
+          this.checkIfInCurrentContext(currentNode.lexeme);
+          contexts[currentFunction].variables.set(currentNode.lexeme, true)
+          this.resultJsCode += `const ${currentNode.lexeme} = `
+        }
       } else {
         this.checkIfInContext(currentNode.lexeme)
         this.resultJsCode += currentNode.lexeme
@@ -147,18 +157,23 @@ class Compiler {
     prevNode = currentNode;
   }
   
+  checkIfInCurrentContext(word) {
+    const functionContext = cloneDeep(contexts[currentFunction]);
+    if (functionContext.variables.get(word) || functionContext.lets.includes(word)) {
+      throw new Error(`Variable ${word} is already declared in current scope`)
+    }
+  }
+  
   checkIfInContext(word) {
     const globalContext = cloneDeep(contexts.global);
     const functionContext = cloneDeep(contexts[currentFunction]);
     
     if (currentFunction !== 'global') {
       functionContext.lets = [...functionContext.lets, ...globalContext.lets]
-      functionContext.variables = [...functionContext.variables, ...globalContext.variables]
+      functionContext.variables = new Map([...functionContext.variables, ...globalContext.variables]);
     }
     
-    const contextVars = [...functionContext.lets, ...functionContext.variables];
-    
-    if (!contextVars.includes(word)) {
+    if (!functionContext.variables.get(word) && !functionContext.lets.includes(word)) {
       throw new Error(`Accesing variable ${word} before initialization`)
     }
   }

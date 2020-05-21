@@ -1,6 +1,34 @@
 [
   {
     "token": "word",
+    "lexeme": "showTable"
+  },
+  {
+    "token": "appropriation",
+    "lexeme": "="
+  },
+  {
+    "token": "word",
+    "lexeme": "function"
+  },
+  {
+    "token": "punc",
+    "lexeme": "("
+  },
+  {
+    "token": "punc",
+    "lexeme": ")"
+  },
+  {
+    "token": "functionBodyStart",
+    "lexeme": ":"
+  },
+  {
+    "token": "word",
+    "lexeme": "end"
+  },
+  {
+    "token": "word",
     "lexeme": "displayTable"
   },
   {
@@ -42,6 +70,26 @@
   {
     "token": "punc",
     "lexeme": ")"
+  },
+  {
+    "token": "dot",
+    "lexeme": "."
+  },
+  {
+    "token": "word",
+    "lexeme": "return"
+  },
+  {
+    "token": "appropriation",
+    "lexeme": "="
+  },
+  {
+    "token": "word",
+    "lexeme": "table"
+  },
+  {
+    "token": "dot",
+    "lexeme": "."
   },
   {
     "token": "word",

@@ -1,5 +1,8 @@
+# Program example
+
 displayTable = function(table):
-    showTable(table)
+    showTable(table).
+    return = table.
     end
 
 main = function():
