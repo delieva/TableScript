@@ -48,19 +48,24 @@ class Parser {
 	};
 	is_separator = (separator) => {
 		let tok = this.peek();
-		return (tok && tok.token === "dot" && tok.lexeme === separator) || (tok && tok.token === "punc" && tok.lexeme === separator);
+		return (tok && tok.token === "punc" && tok.lexeme === separator);
 	};
 	is_empty_params = () => {
 		let tok = this.peek();
 		return (tok && tok.token === "punc" && tok.lexeme === '()');
 	};
+	is_newLine = () => {
+		let tok = this.peek();
+		return (tok && tok.token === "newLine");
+	};
 	
 	
 	skip_start = (start) => {
 		if (this.is_start(start)) this.next(this.input);
+		
 		else this.croak("Expecting punctuation: \"" + this.peek().lexeme + "\"");
 	};
-	skip_dot = (separator) => {
+	skip_separator = (separator) => {
 		if (this.is_separator(separator)) this.next(this.input);
 		else this.croak("Expecting punctuation: \"" + this.peek().lexeme + "\"");
 	};
@@ -98,13 +103,41 @@ class Parser {
 	  }
     let a = [], first = true;
     this.skip_start(start);
+	  if(this.is_newLine()){
+		  this.next();
+		  line++;
+	  }
     while (!this.eof()) {
+		    if(this.is_newLine()){
+			    this.next();
+			    line++;
+		    }
         if (this.is_stop(stop)) break;
-        if (first) first = false; else this.skip_dot(separator);
+        if(this.is_newLine()){
+			    this.next();
+			    line++;
+		    }
+        if (first) first = false; else this.skip_separator(separator);
+		    if(this.is_newLine()){
+			    this.next();
+			    line++;
+		    }
         if (this.is_stop(stop)) break;
+		    if(this.is_newLine()){
+			    this.next();
+			    line++;
+		    }
         a.push(parser());
     }
+	  if(this.is_newLine()){
+		  this.next();
+		  line++;
+	  }
     this.skip_stop(stop);
+	  if(this.is_newLine()){
+		  this.next();
+		  line++;
+	  }
     return a;
   };
 	parse_call = (func) => {
@@ -133,6 +166,10 @@ class Parser {
 	};
 	parse_atom = () => {
 		return this.maybe_call(() => {
+			if(this.is_newLine()){
+				this.next();
+				line++;
+			}
 			if (this.is_punc(":")) return this.parse_prog();
 			if (this.is_kw("function")) {
 				this.next(this.input);
@@ -151,7 +188,7 @@ class Parser {
 		return { type: "prog", prog: program };
 	};
   parse_prog = () => {
-      let prog = this.delimited(":", "end", ".", this.parse_expression);
+      let prog = this.delimited(":", "end", ";", this.parse_expression);
       if (prog.length === 0) return 1;
       if (prog.length === 1) return prog[0];
       return { type: "prog", prog: prog };
