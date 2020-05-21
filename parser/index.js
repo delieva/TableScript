@@ -48,7 +48,7 @@ class Parser {
 	};
 	is_separator = (separator) => {
 		let tok = this.peek();
-		return (tok && tok.token === "punc" && tok.lexeme === separator);
+		return ((tok && tok.token === "punc" && tok.lexeme === separator) || (tok && tok.token === "newLine" && tok.lexeme === separator));
 	};
 	is_empty_params = () => {
 		let tok = this.peek();
@@ -117,7 +117,7 @@ class Parser {
 			    this.next();
 			    line++;
 		    }
-        if (first) first = false; else this.skip_separator(separator);
+        if (first) first = false; else if (separator !== '\n') {this.skip_separator(separator)};
 		    if(this.is_newLine()){
 			    this.next();
 			    line++;
@@ -191,7 +191,7 @@ class Parser {
 		return { type: "prog", prog: program };
 	};
   parse_prog = () => {
-      let prog = this.delimited(":", "end", ";", this.parse_expression);
+      let prog = this.delimited(":", "end", "\n", this.parse_expression);
       if (prog.length === 0) return 1;
       if (prog.length === 1) return prog[0];
       return { type: "prog", prog: prog };
