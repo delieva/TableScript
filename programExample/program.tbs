@@ -1,3 +1,4 @@
+
 # Program example
 bob = 4;
 displayTable = function(table):

@@ -197,6 +197,10 @@ class Parser {
       return { type: "prog", prog: prog };
   }
 	parse_expression = () => {
+		if(this.is_newLine()){
+			this.next();
+			line++;
+		}
 		return this.maybe_call(() => this.maybe_binary(this.parse_atom(this.input), 0));
 	}
 }
