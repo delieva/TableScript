@@ -54,10 +54,15 @@ class Parser {
 		let tok = this.peek();
 		return (tok && tok.token === "punc" && tok.lexeme === '()');
 	};
+	is_newLine = () => {
+		let tok = this.peek();
+		return (tok && tok.token === "newLine");
+	};
 	
 	
 	skip_start = (start) => {
 		if (this.is_start(start)) this.next(this.input);
+		
 		else this.croak("Expecting punctuation: \"" + this.peek().lexeme + "\"");
 	};
 	skip_separator = (separator) => {
@@ -98,13 +103,41 @@ class Parser {
 	  }
     let a = [], first = true;
     this.skip_start(start);
+	  if(this.is_newLine()){
+		  this.next();
+		  line++;
+	  }
     while (!this.eof()) {
+		    if(this.is_newLine()){
+			    this.next();
+			    line++;
+		    }
         if (this.is_stop(stop)) break;
+        if(this.is_newLine()){
+			    this.next();
+			    line++;
+		    }
         if (first) first = false; else this.skip_separator(separator);
+		    if(this.is_newLine()){
+			    this.next();
+			    line++;
+		    }
         if (this.is_stop(stop)) break;
+		    if(this.is_newLine()){
+			    this.next();
+			    line++;
+		    }
         a.push(parser());
     }
+	  if(this.is_newLine()){
+		  this.next();
+		  line++;
+	  }
     this.skip_stop(stop);
+	  if(this.is_newLine()){
+		  this.next();
+		  line++;
+	  }
     return a;
   };
 	parse_call = (func) => {
@@ -133,6 +166,10 @@ class Parser {
 	};
 	parse_atom = () => {
 		return this.maybe_call(() => {
+			if(this.is_newLine()){
+				this.next();
+				line++;
+			}
 			if (this.is_punc(":")) return this.parse_prog();
 			if (this.is_kw("function")) {
 				this.next(this.input);

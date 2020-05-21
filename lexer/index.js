@@ -51,7 +51,7 @@ class Lexer {
       }
     }
     return tokens.filter((item) => {
-      return item.token !== 'spaces' && item.token !== 'newLine' && item.token !== 'comment';
+      return item.token !== 'spaces' && item.token !== 'comment';
     })
   }
 }
