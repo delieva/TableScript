@@ -166,6 +166,9 @@ class Parser {
 	};
 	parse_atom = () => {
 		return this.maybe_call(() => {
+			if(this.is_separator(';')){
+				this.next();
+			}
 			if(this.is_newLine()){
 				this.next();
 				line++;
