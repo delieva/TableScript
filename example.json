@@ -1,5 +1,9 @@
 [
   {
+    "token": "newLine",
+    "lexeme": "\n\n"
+  },
+  {
     "token": "word",
     "lexeme": "displayTable"
   },
@@ -28,6 +32,10 @@
     "lexeme": ":"
   },
   {
+    "token": "newLine",
+    "lexeme": "\n"
+  },
+  {
     "token": "word",
     "lexeme": "showTable"
   },
@@ -48,6 +56,10 @@
     "lexeme": ";"
   },
   {
+    "token": "newLine",
+    "lexeme": "\n"
+  },
+  {
     "token": "word",
     "lexeme": "return"
   },
@@ -64,8 +76,16 @@
     "lexeme": ";"
   },
   {
+    "token": "newLine",
+    "lexeme": "\n"
+  },
+  {
     "token": "word",
     "lexeme": "end"
+  },
+  {
+    "token": "newLine",
+    "lexeme": "\n"
   },
   {
     "token": "word",
@@ -92,6 +112,10 @@
     "lexeme": ":"
   },
   {
+    "token": "newLine",
+    "lexeme": "\n"
+  },
+  {
     "token": "word",
     "lexeme": "a"
   },
@@ -106,6 +130,10 @@
   {
     "token": "punc",
     "lexeme": ";"
+  },
+  {
+    "token": "newLine",
+    "lexeme": "\n"
   },
   {
     "token": "word",
@@ -136,6 +164,10 @@
     "lexeme": ";"
   },
   {
+    "token": "newLine",
+    "lexeme": "\n"
+  },
+  {
     "token": "word",
     "lexeme": "displayTable"
   },
@@ -154,6 +186,18 @@
   {
     "token": "punc",
     "lexeme": ";"
+  },
+  {
+    "token": "newLine",
+    "lexeme": "\n"
+  },
+  {
+    "token": "word",
+    "lexeme": "l"
+  },
+  {
+    "token": "newLine",
+    "lexeme": "\n"
   },
   {
     "token": "word",
@@ -182,6 +226,10 @@
   {
     "token": "punc",
     "lexeme": ";"
+  },
+  {
+    "token": "newLine",
+    "lexeme": "\n"
   },
   {
     "token": "word",
@@ -226,6 +274,10 @@
   {
     "token": "punc",
     "lexeme": ";"
+  },
+  {
+    "token": "newLine",
+    "lexeme": "\n"
   },
   {
     "token": "word",
@@ -336,7 +388,15 @@
     "lexeme": ";"
   },
   {
+    "token": "newLine",
+    "lexeme": "\n"
+  },
+  {
     "token": "word",
     "lexeme": "end"
+  },
+  {
+    "token": "newLine",
+    "lexeme": "\n"
   }
 ]
